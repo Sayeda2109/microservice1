@@ -1,4 +1,4 @@
-name: Trigger Azure Pipeline
+name: Trigger
  
 on:
   workflow_dispatch:
