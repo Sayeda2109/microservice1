@@ -7,9 +7,8 @@ jobs:
   triggerAzurePipeline:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Azure DevOps Pipeline
-        uses: azure/pipelines@v1
-        with:
-          azure-devops-project-url: 'https://dev.azure.com/moboco/moboco_doc'
-          azure-pipeline-name: 'cfw_workflow_pipeline'
-          azure-devops-token: 'w5qnf6n6p4rsnqj4k22ky7n7lqs6fzgvuzlcxigbji5zm3iiqx3q'
+      - name: Trigger Azure DevOps Pipeline on Develop Branch
+        run: |
+          AZURE_PIPELINE_URL="https://dev.azure.com/moboco/moboco_doc/_apis/build/builds?api-version=6.0"
+          BODY='{"definition":{"id":8},"sourceBranch":"refs/heads/develop"}'
+          curl -X POST "$AZURE_PIPELINE_URL" -H "Content-Type: application/json" -H "Authorization: Basic $(echo -n ":aaa" | base64)" -d "$BODY"
