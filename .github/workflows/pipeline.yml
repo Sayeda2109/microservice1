@@ -1,0 +1,15 @@
+name: Trigger Azure Pipeline 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  triggerAzurePipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure DevOps Pipeline
+        uses: azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/moboco/moboco_doc'
+          azure-pipeline-name: 'cfw_workflow_pipeline'
+          azure-devops-token: 'w5qnf6n6p4rsnqj4k22ky7n7lqs6fzgvuzlcxigbji5zm3iiqx3q'
